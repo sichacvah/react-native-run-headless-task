@@ -20,7 +20,7 @@ public class HeadlessService extends HeadlessJsTaskService {
     if (extras != null) {
       String taskKey = extras.getString("taskKey");
       Log.d(LOG_TAG, "START HEADLES JS TASK " + taskKey);
-      long timeout = extras.getFloat("timeout", 0);
+      long timeout = (long) extras.getFloat("timeout", 0);
       boolean allowedInForeground = extras.getBoolean("allowedInForeground");
       return new HeadlessJsTaskConfig(
         taskKey,
