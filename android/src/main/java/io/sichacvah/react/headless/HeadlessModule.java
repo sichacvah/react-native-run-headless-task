@@ -22,7 +22,7 @@ public class HeadlessModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void runTask(String taskKey, ReadableMap args, long timeout, boolean allowedInForeground) {
+  public void runTask(String taskKey, ReadableMap args, float timeout, boolean allowedInForeground) {
     ReactApplicationContext reactContext = getReactApplicationContext();
     Intent service = new Intent(reactContext, HeadlessService.class);
     service.putExtra("allowedInForeground", allowedInForeground);
