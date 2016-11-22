@@ -6,6 +6,8 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import android.content.Intent;
+import com.facebook.react.bridge.ReadableMap;
+import android.os.Bundle;
 
 public class HeadlessModule extends ReactContextBaseJavaModule {
   private final static String LOG_TAG = HeadlessModule.class.getCanonicalName();
@@ -22,8 +24,8 @@ public class HeadlessModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void runTask(String taskKey, ReadableMap args, long timeout, boolean allowedInForeground) {
     ReactApplicationContext reactContext = getReactApplicationContext();
-    Intent service = new Intent(reactContext, MessagingService.class);
-    service.purExtra("allowedInForeground", allowedInForeground);
+    Intent service = new Intent(reactContext, HeadlessService.class);
+    service.putExtra("allowedInForeground", allowedInForeground);
     Bundle bundle = Arguments.toBundle(args);
     service.putExtra("args", bundle);
     service.putExtra("timeout", timeout);

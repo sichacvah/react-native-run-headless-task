@@ -15,7 +15,7 @@ public class HeadlessService extends HeadlessJsTaskService {
 
   @Override
   protected @Nullable HeadlessJsTaskConfig getTaskConfig(Intent intent) {
-    Bundle extras = intent.getExtra();
+    Bundle extras = intent.getExtras();
 
     if (extras != null) {
       String taskKey = extras.getString("taskKey");
